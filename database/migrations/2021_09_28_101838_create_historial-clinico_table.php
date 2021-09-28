@@ -13,14 +13,17 @@ class CreateHistorialClinicoTable extends Migration
      */
     public function up()
     {
-        $table->bigInteger('id');
-        $table->bigInteger('mascota_id'); 
-        $table->int('consulta_id');
+        Schema::create('HistorialClinico', function (Blueprint $table) {
 
-        $table->foreing('consulta_id')->references('id')->on('consultas'); //¿se pueden tener dos claves foraneas?
-        $table->foreing('mascota_id')->references('id')->on('mascotas');
+        $table->id();
+        $table->foreignId('mascota_id'); 
+        $table->foreignId('consulta_id');
+
+        // $table->foreing('consulta_id')->references('id')->on('consultas'); //¿se pueden tener dos claves foraneas?
+        // $table->foreing('mascota_id')->references('id')->on('mascotas');
             
         $table->timestamps();
+    });
     }
 
     /**

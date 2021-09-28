@@ -14,14 +14,14 @@ class CreateMascotasTable extends Migration
     public function up()
     {
         Schema::create('mascotas', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->id();
             $table->string('nombre');
             $table->char('chip');
             $table->string('foto');
             $table->string('tipo');
+            $table->foreignId('cliente_id');
 
-            $table->unsignedbigInteger('cliente_id');
-            $table->foreing('clientes_id')->references('id')->on('clientes');
+            //$table->foreign('clientes_id')->references('id')->on('clientes');
             
             $table->timestamps();
         });

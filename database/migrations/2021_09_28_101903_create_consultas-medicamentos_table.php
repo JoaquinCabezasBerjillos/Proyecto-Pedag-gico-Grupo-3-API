@@ -13,16 +13,19 @@ class CreateConsultasMedicamentosTable extends Migration
      */
     public function up()
     {
-        $table->bigInteger('id');
-        $table->bigInteger('consulta_id');
-        $table->int('medicamento_id');
+        Schema::create('ConsultasMedicamentos', function (Blueprint $table) {
+
+        $table->id();
+        $table->foreignId('consulta_id');
+        $table->foreignId('medicamento_id');
         $table->text('dosis');
 
-        $table->foreing('consulta_id')->references('id')->on('consutas');
-        $table->foreing('medicamentos_id')->references('id')->on('medicamentos'); //se pueden tener dos claves foraneas?
+        // $table->foreing('consulta_id')->references('id')->on('consutas');
+        // $table->foreing('medicamentos_id')->references('id')->on('medicamentos'); //se pueden tener dos claves foraneas?
         
             
         $table->timestamps();
+    });
     }
 
     /**

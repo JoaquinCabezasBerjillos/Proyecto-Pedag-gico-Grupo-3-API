@@ -15,6 +15,11 @@ class CreateCarritoTable extends Migration
     {
         Schema::create('carrito', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('productos_id');
+            $table->bigInteger('historial_id');
+            $table->string('cantidad');
+            $table->decimal('valor-total');
+            
             $table->timestamps();
         });
     }
