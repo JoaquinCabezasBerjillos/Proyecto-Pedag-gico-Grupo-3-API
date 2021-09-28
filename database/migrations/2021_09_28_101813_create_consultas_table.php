@@ -13,12 +13,15 @@ class CreateConsultasTable extends Migration
      */
     public function up()
     {
-        $table->bigInteger('id');
+        Schema::create('Consultas', function (Blueprint $table) {
+
+        $table->id();
         $table->date('fecha');
         $table->integer('diagnostico');
         $table->integer('tipo');
             
         $table->timestamps();
+    });
     }
 
     /**
