@@ -23,7 +23,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function() {
     
-Route::get('/clientes', [ClienteController::class, 'index']);
+Route::get('/clientes/{id}', [ClienteController::class, 'index']);
 Route::post('/clientes', [ClienteController::class, 'store']);
 Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
 Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
