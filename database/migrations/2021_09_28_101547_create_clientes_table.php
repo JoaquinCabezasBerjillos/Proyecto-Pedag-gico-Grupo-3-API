@@ -18,7 +18,7 @@ class CreateClientesTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('movil');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->default(null);
 
             // $table->foreign('user_id')->references('id')->on('users');
 
