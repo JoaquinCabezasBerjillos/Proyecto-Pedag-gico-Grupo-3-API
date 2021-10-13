@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         //Verificar si el email existe y la contraseña es correcta
         // dd($credentials);
-        
+
         if (Auth::attempt($credentials)) {
             //logueamos
             $usuarioLogueado = Auth::user();
@@ -45,11 +45,7 @@ class AuthController extends Controller
 
             return response()->json(['error' => 'Unauthorised'], 401);
         }
-    }
-        public function logout()
-          {
-              Auth::user()->tokens()->delete();
-           } 
+
         public function register(Request $request) {
             // Validar los datos
             $credentials = $request->validate([
