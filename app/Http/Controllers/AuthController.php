@@ -45,44 +45,42 @@ class AuthController extends Controller
 
             return response()->json(['error' => 'Unauthorised'], 401);
         }
+    }
+    public function register(Request $request)
+    {
+        // Validar los datos
+        $credentials = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'confirm_password' => 'required|same:password',
+        ]);
 
-        public function register(Request $request) {
-            // Validar los datos
-            $credentials = $request->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required',
-                'confirm_password' => 'required|same:password',
-            ]);
+        // Encrypt Password
+        $credentials['password'] = Hash::make($credentials['password']);
 
-            // Encrypt Password
-            $credentials['password'] = Hash::make($credentials['password']);
+        // Crear usuario nuevo
+        $usuario = User::create($credentials);
 
-            // Crear usuario nuevo
-            $usuario = User::create($credentials);
-            
-            // Generar el token
-            $token = $usuario->createToken('TokenUsuario')->plainTextToken;
+        // Generar el token
+        $token = $usuario->createToken('TokenUsuario')->plainTextToken;
 
-            // Devolver una respuesta
-            $respuesta = [
-                'data' => [
-                    'usuario' => $usuario,
-                    'token' => $token
-                ],
-            ];
+        // Devolver una respuesta
+        $respuesta = [
+            'data' => [
+                'usuario' => $usuario,
+                'token' => $token
+            ],
+        ];
 
-            return response()->json($respuesta);
-        }
+        return response()->json($respuesta);
+    }
 
-          
+
     public function logout()
     {
         Auth::user()->tokens()->delete();
 
         return ['mensaje' => 'Usuario desconectado'];
-
     }
 };
-
-
