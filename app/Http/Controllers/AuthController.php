@@ -82,7 +82,7 @@ class AuthController extends Controller
 
         return ['mensaje' => 'Usuario desconectado'];
 
-
     }
+};
 
-}
+
