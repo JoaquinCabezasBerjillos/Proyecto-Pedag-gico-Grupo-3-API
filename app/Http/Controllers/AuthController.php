@@ -45,23 +45,7 @@ class AuthController extends Controller
 
             return response()->json(['error' => 'Unauthorised'], 401);
         }
-<<<<<<< HEAD
-    
-}
-    public function logout()
 
-    {   
-        Auth::user()->tokens()->delete();
-
-        return ['mensaje' => 'Usuario desconectado'];
-    }
-};
-=======
-    }
-        public function logout()
-          {
-              Auth::user()->tokens()->delete();
-           } 
         public function register(Request $request) {
             // Validar los datos
             $credentials = $request->validate([
@@ -98,8 +82,7 @@ class AuthController extends Controller
 
         return ['mensaje' => 'Usuario desconectado'];
 
-
     }
+};
 
-}
->>>>>>> c0b3f9a6f06d9f22a092e09638b78f2d8ce9aeaa
+
