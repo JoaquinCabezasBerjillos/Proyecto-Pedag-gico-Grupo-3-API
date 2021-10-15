@@ -19,33 +19,6 @@ class ClienteController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $datos_validados = $request->validate([
-
-            'nombre' => 'required|min:3',
-   
-            'apellido' => 'required',
-
-            'movil' => 'required|min:9',
-
-            'user_id' => 'null',
-         ]);
-   
-         //Crear
-   
-         Cliente::create($datos_validados);
-   
-         return ['mensaje' => 'Usuario creado'];
-
-    }
 
     /**
      * Display the specified resource.

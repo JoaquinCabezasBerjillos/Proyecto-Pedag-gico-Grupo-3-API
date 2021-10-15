@@ -13,5 +13,5 @@ class Cliente extends Model
         'nombre',
         'apellido',
         'movil',
-    ]
+    ];
 }

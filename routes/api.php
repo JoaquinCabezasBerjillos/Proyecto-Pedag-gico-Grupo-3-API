@@ -32,8 +32,7 @@ Route::post('/productos', [ProductoController::class, 'store']);
 Route::patch('/productos/{id}', [ProductoController::class, 'update']);
 Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
     
-Route::get('/clientes/{id}', [ClienteController::class, 'index']);
-Route::post('/clientes', [ClienteController::class, 'store']);
+Route::get('/clientes', [ClienteController::class, 'index']);
 Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
 Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
 Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
