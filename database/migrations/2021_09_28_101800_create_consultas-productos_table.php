@@ -16,6 +16,7 @@ class CreateConsultasProductosTable extends Migration
         Schema::create('ConsultasProductos', function (Blueprint $table) {
 
         $table->id();
+        $table->integer('cantidad');
         $table->foreignId('consulta_id');
         $table->foreignId('producto_id');
         $table->text('descripcion');
