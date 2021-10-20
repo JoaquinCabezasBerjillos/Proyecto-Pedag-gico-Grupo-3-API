@@ -22,10 +22,11 @@ class ProductoFactory extends Factory
     public function definition()
     {
         return [
-        'nombre' => $this->faker->word(),
-        'precio' =>$this->faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
-        'foto' =>$this->faker->imageUrl(200, 200, 'animals', true, 'cats'),
-        'categoria' =>$this->faker-> sentence($nbWords = 6, $variableNbWords = true), 
+        'nombre' =>$this->faker->word(),
+        'precio' =>$this->faker->decimal($nbMaxDecimals = 2, $min = 0, $max = 99999),       
+        'categoria' =>$this->faker->sentence($nbWords = 6, $variableNbWords = true), 
+        'descripcion' =>$this->faker->realText($maxNbChars = 200, $indexSize = 2), 
+        'foto' =>$this->faker->imageUrl(200, 200, 'animals', true, 'cats')
         
         ];
     }

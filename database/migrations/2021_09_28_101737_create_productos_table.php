@@ -18,7 +18,7 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->decimal('precio', 5, 2); 
             $table->string('categoria');
-            $table->text('descripción');
+            $table->text('descripcion');
             $table->string('foto')->default('sinfoto');
              
             $table->timestamps();
