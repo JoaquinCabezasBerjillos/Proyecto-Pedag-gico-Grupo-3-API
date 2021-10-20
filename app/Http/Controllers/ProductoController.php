@@ -23,12 +23,16 @@ class ProductoController extends Controller
         $datos_validados = $request->validate([
 
             'nombre' => 'required|min:3',
-   
+
             'precio' => 'required',
 
-             'categoria' => 'required',
+            'categoria' => 'required',
 
-             'foto' => 'null',
+            'descripcion' => 'required',
+
+            'producto_id' => 'null',
+
+            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ]);
 
@@ -39,47 +43,64 @@ class ProductoController extends Controller
     public function show($id)
     {
 
-       //Buscar medicamento por nombre
+        //Buscar producto por nombre
 
-      $producto= Producto::find($id);
-      // comprobar que el medicamento existe
-      if (!$producto) {
+        $producto = Producto::find($id);
+        // comprobar que el producto existe
+        if (!$producto) {
 
-         return ['error' => 'producto no creado'];
-      }
+            return ['error' => 'producto no creado'];
+        }
 
-      return ['datos' => $producto];
+        return ['datos' => $producto];
     }
 
     public function update(Request $request, $id)
     {
         $datos_validados = $request->validate([
             'nombre' => 'string|min:3',
-   
+
             'precio' => 'required|decimal|between:0,99999.99',
 
             'categoria' => 'required|string',
 
-             
-           
-         ]);
-         //Buscar medicamento por nombre
-         $producto = Producto::find($id);
-         // comprobar que el medicamento existe y si existe actualizar
-         if (!$id) {
+            'descripcion' => 'required',
+
+            'producto_id' => 'null'
+            
+
+        ]);
+        //Buscar producto por nombre
+        $producto = Producto::find($id);
+        // comprobar que el producto existe y si existe actualizar
+        if (!$id) {
             return ['error' => 'No creado'];
-         }
-         //Actualizar el Producto
-         $producto->update($datos_validados);
-         
-         return ['mensaje' => 'Producto actualizado'];
+        }
+        //Actualizar el Producto
+        $producto->update($datos_validados);
+
+        return ['mensaje' => 'Producto actualizado'];
     }
 
-    
+
     public function destroy($id)
     {
-         Producto::destroy($id);
+        Producto::destroy($id);
+
+        return ['mensaje' => 'Producto borrado'];
+    }
+
+    public function savePhoto(Request $request, $id)
+    {
+        $producto = Producto::find($id);
         
-        return ['mensaje' =>'Producto borrado'];
+        $datos_validados = $request->validate([
+            'foto' => 'required|string',
+
+        ]);
+
+        $producto->update($datos_validados);
+        return ['mensaje' => 'Imagen Subida'];
+        
     }
 }
