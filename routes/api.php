@@ -27,10 +27,10 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::middleware(['auth:sanctum'])->group(function() {
   
 Route::get('/productos', [ProductoController::class, 'index']);
-Route::get('/productos/{id}', [ProductoController::class, 'show']);
+Route::get('/productos/mostrar/{id}', [ProductoController::class, 'show']);
 Route::post('/productos', [ProductoController::class, 'store']);
-Route::patch('/productos/{id}', [ProductoController::class, 'update']);
-Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
+Route::patch('/productos/actualizar/{id}', [ProductoController::class, 'update']);
+Route::delete('/productos/borrar/{id}', [ProductoController::class, 'destroy']);
     
 Route::get('/clientes', [ClienteController::class, 'index']);
 Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
