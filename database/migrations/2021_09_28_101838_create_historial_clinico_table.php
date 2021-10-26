@@ -13,11 +13,11 @@ class CreateHistorialClinicoTable extends Migration
      */
     public function up()
     {
-        Schema::create('HistorialClinico', function (Blueprint $table) {
+        Schema::create('historial_clinico', function (Blueprint $table) {
 
         $table->id();
-        $table->foreignId('mascota_id'); 
-        $table->foreignId('consulta_id');
+        $table->foreignId('mascota_id')->constrained();
+        $table->foreignId('consulta_id')->constrained();
 
         // $table->foreing('consulta_id')->references('id')->on('consultas'); //¿se pueden tener dos claves foraneas?
         // $table->foreing('mascota_id')->references('id')->on('mascotas');
