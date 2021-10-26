@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use Symfony\Component\Console\Input\Input;
 
 class ProductoController extends Controller
 {
@@ -32,12 +33,10 @@ class ProductoController extends Controller
 
             'producto_id' => 'null',
 
-            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
         ]);
 
-        Producto::create($datos_validados);
-        return  ['mensaje' => "Producto creado"];
+        $producto = Producto::create($datos_validados);
+        return  ['mensaje' => "Producto creado", 'producto' => $producto];
     }
 
     public function show($id)
@@ -60,14 +59,14 @@ class ProductoController extends Controller
         $datos_validados = $request->validate([
             'nombre' => 'string|min:3',
 
-            'precio' => 'required|decimal|between:0,99999.99',
+            'precio' => 'required|numeric|between:0,9999.99',
 
             'categoria' => 'required|string',
 
             'descripcion' => 'required',
 
-            'producto_id' => 'null'
-            
+            'foto' => 'string'
+
 
         ]);
         //Buscar producto por nombre
@@ -92,15 +91,13 @@ class ProductoController extends Controller
 
     public function savePhoto(Request $request, $id)
     {
-        $producto = Producto::find($id);
-        
         $datos_validados = $request->validate([
-            'foto' => 'required|string',
-
+            'foto' => 'image|mimes:jpeg,png',
         ]);
+
+        $producto = Producto::find($id);
 
         $producto->update($datos_validados);
         return ['mensaje' => 'Imagen Subida'];
-        
     }
 }
