@@ -42,10 +42,11 @@ class MascotaController extends Controller
         //Buscar mascota por nombre
 
         $mascota = Mascota::find($id);
-        // comprobar que el mascota existe
-        if (!$amscota) {
 
-            return ['error' => 'mascota no creada'];
+        // comprobar que la mascota existe
+        if (!$mascota) {
+
+            return ['error' => 'mascota no creado'];
         }
 
         return ['datos' => $mascota];
@@ -62,16 +63,18 @@ class MascotaController extends Controller
             'foto' => 'string',
 
             'tipo' => 'string',
+
             
 
         ]);
         //Buscar mascota por nombre
         $mascota = Mascota::find($id);
-        // comprobar que el mascota existe y si existe actualizar
+        // comprobar que la mascota existe y si existe actualizar
         if (!$id) {
-            return ['error' => 'No creado'];
+            return ['error' => 'No creada'];
         }
-        //Actualizar el Mascota
+        //Actualizar la mascota
+      
         $mascota->update($datos_validados);
 
         return ['mensaje' => 'Mascota actualizada'];
@@ -89,7 +92,9 @@ class MascotaController extends Controller
         $mascota = Mascota::find($id);
         
         $datos_validados = $request->validate([
-            'foto' => 'required|string',
+
+            'foto' => 'string',
+
 
         ]);
 

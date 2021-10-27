@@ -23,7 +23,7 @@ class ProductoFactory extends Factory
     {
         return [
         'nombre' =>$this->faker->word(),
-        'precio' =>$this->faker->numberBetween($min = 1000, $max = 9000), // 8567,       
+        'precio' =>$this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 999),       
         'categoria' =>$this->faker->sentence($nbWords = 6, $variableNbWords = true), 
         'descripcion' =>$this->faker->realText($maxNbChars = 200, $indexSize = 2), 
         'foto' =>$this->faker->imageUrl(200, 200, 'animals', true, 'cats')
