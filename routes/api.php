@@ -24,6 +24,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
+
 Route::middleware(['auth:sanctum'])->group(function() {
   
 Route::get('/productos', [ProductoController::class, 'index']);
@@ -31,9 +32,10 @@ Route::get('/productos/mostrar/{id}', [ProductoController::class, 'show']);
 Route::post('/productos', [ProductoController::class, 'store']);
 Route::patch('/productos/actualizar/{id}', [ProductoController::class, 'update']);
 Route::delete('/productos/borrar/{id}', [ProductoController::class, 'destroy']);
+Route::put('/foto', [ProductoController::class, 'savePhoto']);
+
     
-Route::get('/clientes/{id}', [ClienteController::class, 'index']);
-Route::post('/clientes', [ClienteController::class, 'store']);
+Route::get('/clientes', [ClienteController::class, 'index']);
 Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
 Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
 Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
@@ -47,4 +49,3 @@ Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 });
-

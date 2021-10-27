@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConsultasProductosTable extends Migration
+class CreateHistorialClinicoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateConsultasProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ConsultasProductos', function (Blueprint $table) {
+        Schema::create('historial_clinico', function (Blueprint $table) {
 
         $table->id();
-        $table->foreignId('consulta_id');
-        $table->foreignId('producto_id');
-        $table->text('descripcion');
+        $table->foreignId('mascota_id')->constrained();
+        $table->foreignId('consulta_id')->constrained();
 
-        // $table->foreing('productos_id')->references('id')->on('productos'); //se pueden tener dos claves foraneas?
-        // $table->foreing('consulta_id')->references('id')->on('consutas');
+        // $table->foreing('consulta_id')->references('id')->on('consultas'); //¿se pueden tener dos claves foraneas?
+        // $table->foreing('mascota_id')->references('id')->on('mascotas');
             
         $table->timestamps();
     });
     }
+
     /**
      * Reverse the migrations.
      *

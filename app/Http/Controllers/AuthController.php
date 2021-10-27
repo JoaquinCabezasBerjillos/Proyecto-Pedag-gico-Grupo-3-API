@@ -46,11 +46,14 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorised'], 401);
         }
     }
+    
     public function register(Request $request)
     {
         // Validar los datos
         $credentials = $request->validate([
-            'name' => 'required',
+            'nombre' => 'required|min:3',
+            'apellidos' => 'required|min:6',
+            'movil' => 'required|min:9',
             'email' => 'required|email',
             'password' => 'required',
             'confirm_password' => 'required|same:password',
@@ -63,17 +66,17 @@ class AuthController extends Controller
         $usuario = User::create($credentials);
 
         // Generar el token
-        $token = $usuario->createToken('TokenUsuario')->plainTextToken;
+        //$token = $usuario->createToken('TokenUsuario')->plainTextToken;
 
         // Devolver una respuesta
-        $respuesta = [
+        /* $respuesta = [
             'data' => [
                 'usuario' => $usuario,
                 'token' => $token
             ],
-        ];
+        ]; */
 
-        return response()->json($respuesta);
+        return response()->json(['Usuario creado'], 200);
     }
 
 
