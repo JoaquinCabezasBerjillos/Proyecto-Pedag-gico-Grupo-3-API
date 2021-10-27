@@ -13,7 +13,7 @@ class CreateConsultasTable extends Migration
      */
     public function up()
     {
-        Schema::create('Consultas', function (Blueprint $table) {
+        Schema::create('consultas', function (Blueprint $table) {
 
         $table->id();
         $table->date('fecha');

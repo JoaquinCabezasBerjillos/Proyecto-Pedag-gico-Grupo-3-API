@@ -19,7 +19,7 @@ class CreateMascotasTable extends Migration
             $table->char('chip');
             $table->string('foto');
             $table->string('tipo');
-            $table->foreignId('cliente_id');
+            $table->foreignId('user_id')->constrained();
 
             //$table->foreign('clientes_id')->references('id')->on('clientes');
             

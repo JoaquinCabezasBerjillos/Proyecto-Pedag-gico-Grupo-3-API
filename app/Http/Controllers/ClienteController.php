@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
-
+use App\Models\User;
 
 class ClienteController extends Controller
 {
@@ -15,9 +15,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = Cliente::all();
+        $cliente = User::all();
         return $cliente;
-
     }
 
 
@@ -31,7 +30,7 @@ class ClienteController extends Controller
     {
         //Buscar un cliente por el id.
 
-      $cliente = Cliente::find($id);
+      $cliente = User::find($id);
       // comprobar que el estudiante existe
       if (!$cliente) {
 
@@ -55,15 +54,11 @@ class ClienteController extends Controller
        // usuario en el nombre, apellido y móvil.
       $datos_validados = $request->validate([
             'nombre' => 'required|min:3',
-    
-            'apellido' => 'required',
-
+            'apellidos' => 'required|min:6',
             'movil' => 'required|min:9',
-
-            'user_id' => 'null'
          ]);
          //Buscar un cliente por el id.
-         $cliente = Cliente::find($id);
+         $cliente = User::find($id);
          // comprobar que el cliente existe y si existe actualizar
          if (!$cliente) {
             return ['error' => 'Id erróneo'];
@@ -85,7 +80,7 @@ class ClienteController extends Controller
     {
         //Buscar el cliente por el id.
 
-      $cliente = Cliente::find($id);    
+      $cliente = User::find($id); 
      
       //Borrar el cliente
 

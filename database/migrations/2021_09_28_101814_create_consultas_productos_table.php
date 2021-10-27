@@ -13,12 +13,12 @@ class CreateConsultasProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ConsultasProductos', function (Blueprint $table) {
+        Schema::create('consultas_productos', function (Blueprint $table) {
 
         $table->id();
         $table->integer('cantidad');
-        $table->foreignId('consulta_id');
-        $table->foreignId('producto_id');
+        $table->foreignId('consulta_id')->constrained();
+        $table->foreignId('producto_id')->constrained();
         $table->text('descripcion');
 
         // $table->foreing('productos_id')->references('id')->on('productos'); //se pueden tener dos claves foraneas?
