@@ -26,7 +26,7 @@ class MascotaFactory extends Factory
             'tipo' => $this->faker->name(),
             'chip' => $this->faker->numberBetween($min = 100000, $max = 900000),
             'foto' => $this->faker->image(),
-            'cliente_id' => $this->faker->numberBetween($min = 1, $max = 900000),
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 900000),
         ];
     }
 }

@@ -15,36 +15,34 @@ class MascotaController extends Controller
     public function index()
     {
         $mascota = Mascota::all();
-        return $mascota;
-
+        return $macota;
     }
 
     public function store(Request $request)
     {
         $datos_validados = $request->validate([
 
-            'nombre' => 'required',
+            'nombre' => 'required|min:3',
 
             'chip' => 'required',
 
-            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => '',
 
             'tipo' => 'required',
-
-            'mascota_id' => 'null',
 
         ]);
 
         Mascota::create($datos_validados);
-        return  ['mensaje' => "Mascota creado"];
+        return  ['mensaje' => "Mascota creada"];
+
     }
 
-    
     public function show($id)
     {
         //Buscar mascota por nombre
 
         $mascota = Mascota::find($id);
+
         // comprobar que la mascota existe
         if (!$mascota) {
 
@@ -54,16 +52,18 @@ class MascotaController extends Controller
         return ['datos' => $mascota];
     }
 
+    
     public function update(Request $request, $id)
     {
         $datos_validados = $request->validate([
-            'nombre' => 'string',
+            'nombre' => 'string|min:3',
 
             'chip' => 'string',
 
+            'foto' => 'string',
+
             'tipo' => 'string',
 
-            'mascota_id' => 'null'
             
 
         ]);
@@ -74,6 +74,7 @@ class MascotaController extends Controller
             return ['error' => 'No creada'];
         }
         //Actualizar la mascota
+      
         $mascota->update($datos_validados);
 
         return ['mensaje' => 'Mascota actualizada'];
@@ -91,7 +92,9 @@ class MascotaController extends Controller
         $mascota = Mascota::find($id);
         
         $datos_validados = $request->validate([
+
             'foto' => 'string',
+
 
         ]);
 
