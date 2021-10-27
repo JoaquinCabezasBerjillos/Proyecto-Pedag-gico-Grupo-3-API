@@ -33,6 +33,7 @@ Route::post('/productos', [ProductoController::class, 'store']);
 Route::patch('/productos/actualizar/{id}', [ProductoController::class, 'update']);
 Route::delete('/productos/borrar/{id}', [ProductoController::class, 'destroy']);
 Route::put('/foto', [ProductoController::class, 'savePhoto']);
+
     
 Route::get('/clientes', [ClienteController::class, 'index']);
 Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
