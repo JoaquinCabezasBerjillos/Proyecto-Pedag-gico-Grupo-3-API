@@ -25,26 +25,30 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 
-Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('/productos', [ProductoController::class, 'index']);
-    Route::get('/productos/mostrar/{id}', [ProductoController::class, 'show']);
-    Route::post('/productos', [ProductoController::class, 'store']);
-    Route::patch('/productos/actualizar/{id}', [ProductoController::class, 'update']);
-    Route::delete('/productos/borrar/{id}', [ProductoController::class, 'destroy']);
-    Route::put('/productos/foto/{id}', [ProductoController::class, 'savePhoto']);
+    Route::middleware(['auth:sanctum'])->group(function () {
+        
+    Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
 
-    Route::get('/clientes', [ClienteController::class, 'index']);
-    Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
-    Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
-    Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
+    Route::group(['middleware' => 'admin'], function () {
 
-    Route::get('/mascotas', [MascotaController::class, 'index']);
-    Route::get('/mascotas/mostrar/{id}', [MascotaController::class, 'show']);
-    Route::post('/mascotas', [MascotaController::class, 'store']);
-    Route::put('/mascotas/actualizar/{id}', [MascotaController::class, 'update']);
-    Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
+        Route::get('/productos', [ProductoController::class, 'index']);
+        Route::get('/productos/mostrar/{id}', [ProductoController::class, 'show']);
+        Route::post('/productos', [ProductoController::class, 'store']);
+        Route::patch('/productos/actualizar/{id}', [ProductoController::class, 'update']);
+        Route::delete('/productos/borrar/{id}', [ProductoController::class, 'destroy']);
+        Route::post('/productos/foto', [ProductoController::class, 'savePhoto']);
 
+        Route::get('/clientes', [ClienteController::class, 'index']);
+        Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
+        Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
+        Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
 
+        Route::get('/mascotas', [MascotaController::class, 'index']);
+        Route::get('/mascotas/mostrar/{id}', [MascotaController::class, 'show']);
+        Route::post('/mascotas', [MascotaController::class, 'store']);
+        Route::put('/mascotas/actualizar/{id}', [MascotaController::class, 'update']);
+        Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
+    });
     Route::get('/logout', [AuthController::class, 'logout']);
 });

@@ -89,15 +89,30 @@ class ProductoController extends Controller
         return ['mensaje' => 'Producto borrado'];
     }
 
-    public function savePhoto(Request $request, $id)
+    public function savePhoto(Request $request)
     {
-        $datos_validados = $request->validate([
+        $request->validate([
+            'photos' => 'required|max:2048'
+        ]);
+
+        $productoNuevo = Producto::factory()->make();
+
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file('photos')->getClientOriginalName();
+            $filePath = $request->file('photos')->storeAs('uploads', $fileName, 'public');
+
+            $productoNuevo->foto = '/storage/' . $filePath;
+            $productoNuevo->save();
+
+            return response()->json($productoNuevo, 200);
+        }
+        /* $datos_validados = $request->validate([
             'foto' => 'image|mimes:jpeg,png',
         ]);
 
         $producto = Producto::find($id);
 
-        $producto->update($datos_validados);
+        $producto->update($datos_validados); */
         return ['mensaje' => 'Imagen Subida'];
     }
 }
