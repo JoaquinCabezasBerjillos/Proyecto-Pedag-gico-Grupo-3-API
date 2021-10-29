@@ -15,7 +15,7 @@ class MascotaController extends Controller
     public function index()
     {
         $mascota = Mascota::all();
-        return $macota;
+        return $mascota;
     }
 
     public function store(Request $request)

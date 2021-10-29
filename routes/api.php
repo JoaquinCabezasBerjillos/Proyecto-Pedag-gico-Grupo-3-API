@@ -45,6 +45,7 @@ Route::get('/mascotas/mostrar/{id}', [MascotaController::class, 'show']);
 Route::post('/mascotas', [MascotaController::class, 'store']);
 Route::put('/mascotas/actualizar/{id}', [MascotaController::class, 'update']);
 Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
+Route::put('/foto', [MascotaController::class, 'savePhoto']);
 
 
 Route::get('/logout', [AuthController::class, 'logout']);
