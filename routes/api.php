@@ -25,7 +25,6 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 
-
     Route::middleware(['auth:sanctum'])->group(function () {
         
     Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
@@ -51,4 +50,5 @@ Route::post('/register', [AuthController::class, 'register']);
         Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
     });
     Route::get('/logout', [AuthController::class, 'logout']);
+
 });

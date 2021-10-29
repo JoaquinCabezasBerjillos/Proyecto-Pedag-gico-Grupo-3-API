@@ -15,52 +15,91 @@ class MascotaController extends Controller
     public function index()
     {
         $mascota = Mascota::all();
-        return $mascota;
-
+        return $macota;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        Mascota::create($request->all());
+        $datos_validados = $request->validate([
+
+            'nombre' => 'required|min:3',
+
+            'chip' => 'required',
+
+            'foto' => '',
+
+            'tipo' => 'required',
+
+        ]);
+
+        Mascota::create($datos_validados);
+        return  ['mensaje' => "Mascota creada"];
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        //Buscar mascota por nombre
+
+        $mascota = Mascota::find($id);
+
+        // comprobar que la mascota existe
+        if (!$mascota) {
+
+            return ['error' => 'mascota no creado'];
+        }
+
+        return ['datos' => $mascota];
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        $datos_validados = $request->validate([
+            'nombre' => 'string|min:3',
+
+            'chip' => 'string',
+
+            'foto' => 'string',
+
+            'tipo' => 'string',
+
+            
+
+        ]);
+        //Buscar mascota por nombre
+        $mascota = Mascota::find($id);
+        // comprobar que la mascota existe y si existe actualizar
+        if (!$id) {
+            return ['error' => 'No creada'];
+        }
+        //Actualizar la mascota
+      
+        $mascota->update($datos_validados);
+
+        return ['mensaje' => 'Mascota actualizada'];
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Mascota::destroy($id);
+
+        return ['mensaje' => 'Mascota borrada'];
+    }
+
+    public function savePhoto(Request $request, $id)
+    {
+        $mascota = Mascota::find($id);
+        
+        $datos_validados = $request->validate([
+
+            'foto' => 'string',
+
+
+        ]);
+
+        $mascota->update($datos_validados);
+        return ['mensaje' => 'Imagen Subida'];
+        
     }
 }

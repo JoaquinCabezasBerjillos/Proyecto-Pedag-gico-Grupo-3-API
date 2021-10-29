@@ -14,7 +14,6 @@ class Mascota extends Model
         'tipo',
         'chip',
         'foto',
-        'cliente_id',
     ];
 
 }
