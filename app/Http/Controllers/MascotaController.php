@@ -26,8 +26,6 @@ class MascotaController extends Controller
 
             'chip' => 'required',
 
-            'foto' => '',
-
             'tipo' => 'required',
 
         ]);

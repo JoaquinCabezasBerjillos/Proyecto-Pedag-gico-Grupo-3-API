@@ -41,10 +41,10 @@ Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
 Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
 
 Route::get('/mascotas', [MascotaController::class, 'index']);
-Route::get('/mascotas/mostrar/{id}', [MascotaController::class, 'show']);
+Route::get('/mascotas/{id}', [MascotaController::class, 'show']);
 Route::post('/mascotas', [MascotaController::class, 'store']);
-Route::put('/mascotas/actualizar/{id}', [MascotaController::class, 'update']);
-Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
+Route::put('/mascotas/{id}', [MascotaController::class, 'update']);
+Route::delete('/mascotas/{id}', [MascotaController::class, 'destroy']);
 Route::put('/foto', [MascotaController::class, 'savePhoto']);
 
 
