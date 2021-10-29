@@ -50,5 +50,4 @@ Route::post('/register', [AuthController::class, 'register']);
         Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
     });
     Route::get('/logout', [AuthController::class, 'logout']);
-
 });
