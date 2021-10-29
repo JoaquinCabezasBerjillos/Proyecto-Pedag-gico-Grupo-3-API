@@ -86,4 +86,9 @@ class AuthController extends Controller
 
         return ['mensaje' => 'Usuario desconectado'];
     }
+
+    public function getAuthUser() {
+
+return response()->json(['user'=> auth()->user()], 200);
+    } 
 };
