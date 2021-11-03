@@ -19,7 +19,6 @@ class ClienteController extends Controller
         return $cliente;
     }
 
-
     /**
      * Display the specified resource.
      *
@@ -33,7 +32,6 @@ class ClienteController extends Controller
       $cliente = User::find($id);
       // comprobar que el estudiante existe
       if (!$cliente) {
-
          return ['error' => 'Id erróneo'];
       }
 

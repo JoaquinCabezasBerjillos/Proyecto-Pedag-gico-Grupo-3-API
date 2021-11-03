@@ -20,15 +20,16 @@ class MascotaController extends Controller
 
     public function store(Request $request)
     {
+        
         $datos_validados = $request->validate([
 
             'nombre' => 'required|min:3',
 
             'chip' => 'required',
 
-            'foto' => '',
-
             'tipo' => 'required',
+
+            'user_id' => 'required',
 
         ]);
 
@@ -56,15 +57,14 @@ class MascotaController extends Controller
     public function update(Request $request, $id)
     {
         $datos_validados = $request->validate([
+            
             'nombre' => 'string|min:3',
 
-            'chip' => 'string',
+            'chip' => 'number',
 
             'foto' => 'string',
 
             'tipo' => 'string',
-
-            
 
         ]);
         //Buscar mascota por nombre
@@ -94,7 +94,6 @@ class MascotaController extends Controller
         $datos_validados = $request->validate([
 
             'foto' => 'string',
-
 
         ]);
 

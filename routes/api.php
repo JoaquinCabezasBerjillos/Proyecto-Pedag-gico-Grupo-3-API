@@ -19,13 +19,12 @@ use App\Http\Controllers\MascotaController;
 */
 
 
-
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
 
-    Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
         
     Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
 
@@ -44,10 +43,10 @@ Route::post('/register', [AuthController::class, 'register']);
         Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
 
         Route::get('/mascotas', [MascotaController::class, 'index']);
-        Route::get('/mascotas/mostrar/{id}', [MascotaController::class, 'show']);
+        Route::get('/mascotas/{id}', [MascotaController::class, 'show']);
         Route::post('/mascotas', [MascotaController::class, 'store']);
-        Route::put('/mascotas/actualizar/{id}', [MascotaController::class, 'update']);
-        Route::delete('/mascotas/borrar/{id}', [MascotaController::class, 'destroy']);
+        Route::put('/mascotas/{id}', [MascotaController::class, 'update']);
+        Route::delete('/mascotas/{id}', [MascotaController::class, 'destroy']);
     });
     Route::get('/logout', [AuthController::class, 'logout']);
 });
