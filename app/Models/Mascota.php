@@ -16,5 +16,9 @@ class Mascota extends Model
         'foto',
         'user_id',
     ];
+    public function cliente()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

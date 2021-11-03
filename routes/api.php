@@ -25,22 +25,21 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-        
     Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
 
     Route::group(['middleware' => 'admin'], function () {
 
         Route::get('/productos', [ProductoController::class, 'index']);
-        Route::get('/productos/mostrar/{id}', [ProductoController::class, 'show']);
+        Route::get('/productos/{id}', [ProductoController::class, 'show']);
         Route::post('/productos', [ProductoController::class, 'store']);
-        Route::patch('/productos/actualizar/{id}', [ProductoController::class, 'update']);
-        Route::delete('/productos/borrar/{id}', [ProductoController::class, 'destroy']);
+        Route::patch('/productos/{id}', [ProductoController::class, 'update']);
+        Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
         Route::post('/productos/foto', [ProductoController::class, 'savePhoto']);
 
         Route::get('/clientes', [ClienteController::class, 'index']);
-        Route::get('/clientes/mostrar/{id}', [ClienteController::class, 'show']);
-        Route::put('/clientes/actualizar/{id}', [ClienteController::class, 'update']);
-        Route::delete('/clientes/borrar/{id}', [ClienteController::class, 'destroy']);
+        Route::get('/clientes/{id}', [ClienteController::class, 'show']);
+        Route::put('/clientes/{id}', [ClienteController::class, 'update']);
+        Route::delete('/clientes/{id}', [ClienteController::class, 'destroy']);
 
         Route::get('/mascotas', [MascotaController::class, 'index']);
         Route::get('/mascotas/{id}', [MascotaController::class, 'show']);
