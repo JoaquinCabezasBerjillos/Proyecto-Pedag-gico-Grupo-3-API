@@ -34,6 +34,6 @@ class CreateConsultasProductosTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('consultas_productos');
     }
 }

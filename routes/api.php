@@ -19,14 +19,12 @@ use App\Http\Controllers\MascotaController;
 */
 
 
-
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-
     Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
 
     Route::group(['middleware' => 'admin'], function () {
@@ -48,8 +46,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/mascotas', [MascotaController::class, 'store']);
         Route::put('/mascotas/{id}', [MascotaController::class, 'update']);
         Route::delete('/mascotas/{id}', [MascotaController::class, 'destroy']);
-
-        
     });
     Route::get('/logout', [AuthController::class, 'logout']);
 });

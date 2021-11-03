@@ -14,6 +14,7 @@ class Mascota extends Model
         'tipo',
         'chip',
         'foto',
+        'user_id',
     ];
     public function cliente()
     {
