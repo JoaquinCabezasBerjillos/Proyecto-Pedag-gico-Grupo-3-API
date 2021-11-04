@@ -65,17 +65,7 @@ class AuthController extends Controller
         // Crear usuario nuevo
         $usuario = User::create($credentials);
 
-        // Generar el token
-        //$token = $usuario->createToken('TokenUsuario')->plainTextToken;
-
-        // Devolver una respuesta
-        /* $respuesta = [
-            'data' => [
-                'usuario' => $usuario,
-                'token' => $token
-            ],
-        ]; */
-
+      
         return response()->json(['Usuario creado'], 200);
     }
 

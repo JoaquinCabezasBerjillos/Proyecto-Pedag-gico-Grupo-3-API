@@ -25,7 +25,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
+Route::get('/getAuthUser', [AuthController::class, 'getAuthUser']);
 
     Route::group(['middleware' => 'admin'], function () {
 
@@ -37,7 +37,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/productos/foto', [ProductoController::class, 'savePhoto']);
 
         Route::get('/clientes', [ClienteController::class, 'index']);
-        Route::get('/clientes/{id}', [ClienteController::class, 'show']);
+        Route::get('/clientes/{id}', [ClienteController::class, 'show']);      
         Route::put('/clientes/{id}', [ClienteController::class, 'update']);
         Route::delete('/clientes/{id}', [ClienteController::class, 'destroy']);
 

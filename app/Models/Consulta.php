@@ -12,7 +12,7 @@ class Consulta extends Model
         'fecha',
         'diagnostico',
         'producto',
-        // 'receta'
+        'receta',
         'dosis',
         'categoria',
     ];
